@@ -2,12 +2,15 @@ package ru.job4j;
 
 import ru.job4j.grabber.model.Post;
 import ru.job4j.grabber.service.Config;
+import ru.job4j.grabber.service.HabrCareerParse;
 import ru.job4j.grabber.service.SchedulerManager;
 import ru.job4j.grabber.service.SuperJobGrab;
 import ru.job4j.grabber.stores.JdbcStore;
 import ru.job4j.grabber.stores.MemStore;
 import java.sql.DriverManager;
 import java.sql.SQLException;
+import java.util.List;
+
 import org.apache.log4j.Logger;
 
 public class Main {
