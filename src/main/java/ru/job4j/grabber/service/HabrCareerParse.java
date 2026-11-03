@@ -37,6 +37,7 @@ public class HabrCareerParse implements Parse {
                     var post = new Post();
                     post.setTitle(vacancyName);
                     post.setLink(link);
+                    post.setDescription(retrieveDescription(link));
                     post.setTime(time);
                     result.add(post);
                 });
@@ -45,5 +46,15 @@ public class HabrCareerParse implements Parse {
             log.error("When load page", e);
         }
         return result;
+    }
+
+    private String retrieveDescription(String link) {
+        try {
+            var document = Jsoup.connect(link).get();
+            return document.select(".vacancy-description__text").text();
+        } catch (IOException e) {
+            log.error("When load description: " + link, e);
+            return "";
+        }
     }
 }
